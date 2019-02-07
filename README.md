@@ -28,14 +28,22 @@ Login to [Facebook](https://www.facebook.com "Title") and follow this path:
 ```r
 library(rjson) # to read in the json file
 library (ggplot2) # for all the visualizations
-library(dplyr) # for dataframe manipulation 
+library(dplyr) # for dataframe manipulation
 library(tidyr) # for array operations
 library(tm) # for stopwords library to limit most common words
 ```
 
 ### Reading In Your Data
 
-Save your unzipped messages folder to an easily accessible directory.
+Save your unzipped messages folder to an easily accessible directory. The JSON file lives here:
+
+`messages > inbox > person_##### > message.json`
+
+Read in the json file using either a manual path:
+`result = fromJSON(file =  "/Users/.../message.json")`
+or a file selection
+`result = fromJSON(file =  file.choose())`
+
 
 
 
