@@ -47,7 +47,11 @@ or a file selection
 
 `result = fromJSON(file =  file.choose())`
 
+Running this command `as.data.frame(result$messages[1])` will:
 
+1. Validate that the data read was successful
+2. Display the structure of the dataframe
+3. Show the last message that was sent in the thread
 
 
 
