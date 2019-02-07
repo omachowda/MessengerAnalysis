@@ -6,7 +6,7 @@ This project uses personal Facebook Messenger data to produce graphs of messagin
 
 Leverages R and ggplot2 to visualize trends over time by month, weekday, and hour. Also includes most common word analysis, and aggregation of some interesting statistics.
 
-Currently functional for private messaages and group chats.
+Currently functional for private messages and group chats.
 
 ## Dowload Your Data
 
@@ -39,7 +39,7 @@ Save your unzipped messages folder to an easily accessible directory. The JSON f
 
 `messages > inbox > person_##### > message.json`
 
-Read in the json file using either a manual path:
+Read in the JSON file using either a manual path:
 
 `result = fromJSON(file =  "/Users/.../message.json")`
 
@@ -62,8 +62,8 @@ Running this command `as.data.frame(result$messages[1])` will:
     * video
     * sticker
     * audio file
-    * url
-2. Convert timestamps_ms to a useable timestamp
+    * URL
+2. Convert timestamps_ms to a usable timestamp
 3. Add descriptive time data to our data frame 
 
 ### Exclude and Rebuild
@@ -71,8 +71,8 @@ Running this command `as.data.frame(result$messages[1])` will:
 Using the O(n) methodology (suggested) we:
 
 1. Pre-allocate our data frame
-2. Iterate through the entire dataframe that we just read in exlcuding messages mentioned aboce
-3. Drop rows that have null values this
+2. Iterate through the entire dataframe that we just read in excluding messages mentioned above
+3. Drop rows that have any null values  
 
 
 ### Convert Timestamp_ms
@@ -119,7 +119,7 @@ All visualizations were created using [ggplot2](https://ggplot2.tidyverse.org/ "
 Requires some tweaks to work
 
 1. Change sender names
-2. Change ` geom_text(aes(y = c(6000,1800)` so that the numbers rotate properly in the pie chart. This is determined by the # of messages sent in the thread.
+2. Change ` geom_text(aes(y = c(6000,1800))` so that the numbers rotate properly in the pie chart. This is determined by the # of messages sent in the thread.
 
 ### Rest of the Charts
 
@@ -132,7 +132,7 @@ Should be pretty straightforward, use ggplot2 documentation for help. Some fun c
 
 #### TODO ####
 
-Any suggestions are welcomed
+Any suggestions are welcome
 
-1. Expannd functionality to be able to analyze most common emoji sent.
-2. Fix pie chart to be paramterized.
+1. Expand functionality to be able to analyze most common emoji sent.
+2. Fix pie chart to be parameterized.
