@@ -40,8 +40,11 @@ Save your unzipped messages folder to an easily accessible directory. The JSON f
 `messages > inbox > person_##### > message.json`
 
 Read in the json file using either a manual path:
+
 `result = fromJSON(file =  "/Users/.../message.json")`
+
 or a file selection
+
 `result = fromJSON(file =  file.choose())`
 
 
