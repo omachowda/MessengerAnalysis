@@ -58,17 +58,81 @@ Running this command `as.data.frame(result$messages[1])` will:
 ### Outline 
 
 1. Exclude all messages that contain a
-  * photo
-  * video
-  * sticker
-  * audio file
-  * url
+    * photo
+    * video
+    * sticker
+    * audio file
+    * url
 2. Convert timestamps_ms to a useable timestamp
 3. Add descriptive time data to our data frame 
 
+### Exclude and Rebuild
 
+Using the O(n) methodology (suggested) we:
+
+1. Pre-allocate our data frame
+2. Iterate through the entire dataframe that we just read in exlcuding messages mentioned aboce
+3. Drop rows that have null values this
+
+
+### Convert Timestamp_ms
+
+```r
+# PARAMETERS
+# ms: a numeric vector of milliseconds (big integers of 13 digits)
+# t0: a string of the format "yyyy-mm-dd", specifying the date that
+#      corresponds to 0 millisecond
+# timezone: a string specifying a timezone that can be recognized by R
+# returns: a POSIXct vector representing calendar dates and times  
+
+ms_to_date = function(ms, t0="1970-01-01", timezone){
+  sec = ms / 1000
+  as.POSIXct(sec, origin=t0, tz=timezone)
+}
+```
+
+### Useful Time Data
+
+The following code gives time data we can use for our visualizations, includes:
+
+1. Weekday
+2. Hour
+3. Month/Year combination
+
+```r
+mydf$weekdays = factor(weekdays(mydf$datetime),levels = c('Monday', 'Tuesday', 'Wednesday', 'Thursday',
+                                                          'Friday', 'Saturday', 'Sunday'))
+mydf$months = months((mydf$datetime))
+mydf$date = as.Date(mydf$datetime)
+mydf$hours = format(mydf$datetime, '%H')
+mydf$monthyear = format(mydf$datetime, '%m/%Y')
+mydf$monthyeartest = format(mydf$datetime, '%y/%m')
+mydf$monthday = format(mydf$datetime, '%m/%d/%Y')
+```
+
+## Visualization
+
+All visualizations were created using [ggplot2](https://ggplot2.tidyverse.org/ "Title")
+
+### Pie Chart
+
+Requires some tweaks to work
+
+1. Change sender names
+2. Change ` geom_text(aes(y = c(6000,1800)` so that the numbers rotate properly in the pie chart. This is determined by the # of messages sent in the thread.
+
+### Rest of the Charts
+
+Should be pretty straightforward, use ggplot2 documentation for help. Some fun changes you can make:
+
+1. Change colors by modifying `scale_fill_brewer(palette='Set1')`
+2. Set the background to white `theme(panel.background = element_rect(fill = 'white', colour = 'white'))`
+3. Add and customize plot themes such as minimalplottheme that was used for the pie chart
 
 
 #### TODO ####
 
-Expannd functionality to be able to analyze most common emoji sent.
+Any suggestions are welcomed
+
+1. Expannd functionality to be able to analyze most common emoji sent.
+2. Fix pie chart to be paramterized.
