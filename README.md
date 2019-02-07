@@ -1,10 +1,10 @@
-# MessengerAnlaysis
+# Messenger Anlaysis
 
 ## Dowload Your Data
 
 Login to [Facebook](https://www.facebook.com "Title") and follow this path:
 
-'Facebook Home > Settings > Your Facebook Information > Download Your Infomation'
+`Facebook Home > Settings > Your Facebook Information > Download Your Infomation`
 
 1. Deselect all categories
 2. Select Messages under Your Information
