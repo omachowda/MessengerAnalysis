@@ -53,6 +53,8 @@ Running this command `as.data.frame(result$messages[1])` will:
 2. Display the structure of the dataframe
 3. Show the last message that was sent in the thread
 
+## Data Manipulation
+
 
 
 
