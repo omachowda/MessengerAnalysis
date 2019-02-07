@@ -55,6 +55,17 @@ Running this command `as.data.frame(result$messages[1])` will:
 
 ## Data Manipulation
 
+### Outline 
+
+1. Exclude all messages that contain a
+  * photo
+  * video
+  * sticker
+  * audio file
+  * url
+2. Convert timestamps_ms to a useable timestamp
+3. Add descriptive time data to our data frame 
+
 
 
 
